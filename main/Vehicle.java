@@ -7,6 +7,9 @@ public class Vehicle {
 	private String ownerName;
 	static long vehicleIdentificationNUmber;
 	private int vehicleId;
+	public static final String TURN_LEFT="left";
+	public static final String TURN_RIGHT="right";
+	
 	
 
 	public Vehicle()
@@ -65,15 +68,39 @@ public class Vehicle {
 		return vehicleId;
 	}
 
-	public int changeSpeed(int a)
+	public int changeSpeed(int changeSpeedTo)
 	{
-		return a+20;
+		return changeSpeedTo;
 	}
 	
 	public int stopSpeed(int ab)
 	{
 		return 0;
 	}
+
+	public double directionRotation(double degree,String leftOrRight)
+	{
+		if(leftOrRight==TURN_LEFT)
+		{
+			double afterRotation=this.currentDirection-degree;
+			return afterRotation;
+		}
+		else if(leftOrRight==TURN_RIGHT)
+		{
+			double afterRotation=this.currentDirection+degree;
+			return afterRotation;
+		}
+		else 
+			return 0.0;
+	}
+
+	public String toString()
+	{
+		
+		return this.currentSpeed +"||"+ this.currentDirection +"||"+ this.ownerName +"||"+ this.vehicleId;
+		
+	}
+	
 
 	
 }	
